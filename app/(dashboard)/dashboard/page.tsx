@@ -23,7 +23,6 @@ import {
 import { usePortfolio } from "@/hooks/usePortfolio";
 import useTransaction from "@/hooks/useTransaction";
 
-// 🌟 STRICK ARCHITECTURAL INTERFACES
 interface NavigationItem {
   name: string;
   href: string;
