@@ -20,7 +20,6 @@ function ResetPasswordFormContent() {
   const router = useRouter();
   const [complete, setComplete] = useState<boolean>(false);
 
-  // Extract variables passed from the custom Resend email template link
   const email = searchParams.get("email") || "";
   const token = searchParams.get("token") || "";
 
@@ -65,7 +64,6 @@ function ResetPasswordFormContent() {
     },
   });
 
-  // Safe fallback if an investor lands here without proper verification signatures
   if (!email || !token) {
     return (
       <div className="text-center py-6">
@@ -228,5 +226,4 @@ export default function ResetPasswordPage() {
   );
 }
 
-// Global placeholder variable for the absolute bottom condition check rule context block
 const updatePasswordMutationIsPendingPlaceholder = false;

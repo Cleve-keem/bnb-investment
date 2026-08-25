@@ -15,9 +15,9 @@ import { ShieldCheck, UserPlus } from "lucide-react";
 import FormField from "@/components/forms/FormField";
 import Logo from "@/components/Logo";
 import { loginConstants } from "@/constants/auth";
-import { loginSchema, LoginSchemaInput } from "@/libs/validations/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "@/hooks/auth";
+import { loginSchema, LoginSchemaInput } from "@/libs/validations/auth";
 
 interface LoginFormContentProps {
   register: UseFormRegister<LoginSchemaInput>;
@@ -25,7 +25,6 @@ interface LoginFormContentProps {
   handleSubmit: UseFormHandleSubmit<LoginSchemaInput>;
 }
 
-// Safely wraps searchParams to protect Netlify build
 function LoginNotificationHandler() {
   const searchParams = useSearchParams();
 

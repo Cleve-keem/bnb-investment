@@ -1,4 +1,8 @@
-import { LoginSchemaInput, RegisterSchemaInput } from "@/libs/validations/auth";
+import {
+  forgotPasswordSchema,
+  LoginSchemaInput,
+  RegisterSchemaInput,
+} from "@/libs/validations/auth";
 import { supabase } from "../supabase/browser";
 
 export const AuthApi = {
@@ -38,5 +42,9 @@ export const AuthApi = {
     }
 
     return authData;
+  },
+
+  async forgotPassword() {
+    return "change password";
   },
 };

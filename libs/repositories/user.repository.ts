@@ -1,41 +1,41 @@
-// import { SupabaseClient } from "@supabase/supabase-js";
+import { SupabaseClient } from "@supabase/supabase-js";
 
-// export class UserRepository {
-//   constructor(private readonly supabase: SupabaseClient) {}
+export class UserRepository {
+  constructor(private readonly supabase: SupabaseClient) {}
 
-//   async findById(userId: string) {
-//     const { data, error } = await this.supabase
-//       .from("users")
-//       .select(
-//         `
-//         id,
-//         email,
-//         first_name,
-//         last_name,
-//         user_role,
-//         is_suspended
-//         `,
-//       )
-//       .eq("id", userId)
-//       .single();
+  async findById(userId: string) {
+    const { data, error } = await this.supabase
+      .from("users")
+      .select(
+        `
+        id,
+        email,
+        first_name,
+        last_name,
+        user_role,
+        is_suspended
+        `,
+      )
+      .eq("id", userId)
+      .single();
 
-//     if (error) {
-//       throw new Error("Unable to retrieve user profile.");
-//     }
+    if (error) {
+      throw new Error("Unable to retrieve user profile.");
+    }
 
-//     return data;
-//   }
+    return data;
+  }
 
-//   async updateOtpStatus(userId: string) {
-//     const { error } = await this.supabase
-//       .from("users")
-//       .update({
-//         is_otp_verified: true,
-//       })
-//       .eq("id", userId);
+  async updateOtpStatus(userId: string) {
+    const { error } = await this.supabase
+      .from("users")
+      .update({
+        is_otp_verified: true,
+      })
+      .eq("id", userId);
 
-//     if (error) {
-//       throw error;
-//     }
-//   }
-// }
+    if (error) {
+      throw error;
+    }
+  }
+}
