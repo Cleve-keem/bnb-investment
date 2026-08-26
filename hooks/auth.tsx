@@ -16,9 +16,8 @@ export function useLoginMutation() {
 
     onSuccess: (data, variables, contextToastId) => {
       toast.dismiss(contextToastId);
-      toast.success("Welcome back!");
-      console.log(data);
-      // router.push("/dashboard");
+      toast.success(`Welcome back!`);
+      router.push(`/verify-otp?email=${encodeURIComponent(variables.email)}`);
     },
 
     onError(error, variables, contextToastId) {
@@ -45,14 +44,11 @@ export function useRegisterMutation() {
       toast.success(
         "Registration successful! Please check your email to verify your account.",
       );
-      // router.push(
-      //   `/auth/verify-email?email=${encodeURIComponent(data.data.email)}`,
-      // );
+      router.push(`/verify-email?email=${encodeURIComponent(variables.email)}`);
     },
 
     onError: (error: any, variables, contextToastId) => {
       toast.dismiss(contextToastId);
-      // In hooks/auth.ts -> useRegisterMutation
       if (error) {
         console.error(
           "Full Supabase Context Object:",
@@ -94,6 +90,7 @@ export function useForgotPasswordMutation(onSuccessCallback?: () => void) {
     onMutate: () => {
       return toast.loading("Processing validation records...");
     },
+
     onSuccess: (data, variables, contextToastId) => {
       toast.dismiss(contextToastId);
       toast.success(
@@ -103,6 +100,7 @@ export function useForgotPasswordMutation(onSuccessCallback?: () => void) {
 
       if (onSuccessCallback) onSuccessCallback();
     },
+
     onError: (error: any, variables, contextToastId) => {
       toast.dismiss(contextToastId);
       toast.error(

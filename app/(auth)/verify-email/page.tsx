@@ -2,8 +2,12 @@
 
 import { ArrowRight, ExternalLink, Mail } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function VerifyAccount() {
+  const searchParams = useSearchParams();
+  const emailAddress = searchParams.get("email");
+
   return (
     <div className="min-h-screen text-white flex flex-col items-center justify-center p-6 bg-black">
       {/* Upper Content Section */}
@@ -19,7 +23,7 @@ export default function VerifyAccount() {
         <p className="text-zinc-400 max-w-sm mx-auto text-sm leading-relaxed">
           We’ve sent a verification link to <br />
           <span className="text-white font-medium underline decoration-yellow-500/40 underline-offset-4">
-            email address
+            {emailAddress}
           </span>
         </p>
       </div>
@@ -38,7 +42,7 @@ export default function VerifyAccount() {
         </a>
 
         {/* Secondary Navigation Link */}
-        <Link href="/auth/register" className="block">
+        <Link href="/login" className="block">
           <button className="flex w-full h-12 rounded-xl text-zinc-400 hover:text-white items-center justify-center gap-2 transition-colors text-sm font-medium">
             I've verified my account
             <ArrowRight className="size-4" />
