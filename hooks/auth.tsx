@@ -17,7 +17,8 @@ export function useLoginMutation() {
     onSuccess: (data, variables, contextToastId) => {
       toast.dismiss(contextToastId);
       toast.success(`Welcome back!`);
-      router.push(`/verify-otp?email=${encodeURIComponent(variables.email)}`);
+      console.log(data);
+      // router.push(`/verify-otp?email=${encodeURIComponent(variables.email)}`);
     },
 
     onError(error, variables, contextToastId) {
