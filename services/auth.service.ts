@@ -20,7 +20,7 @@ export const AuthService = {
   },
 
   async register(data: RegisterSchemaInput) {
-    const fullName = [data.firstname, data.middlename, data.lastname]
+    const fullName = [data.lastname, data.firstname, data.middlename]
       .filter(Boolean)
       .join(" ");
 
@@ -32,7 +32,6 @@ export const AuthService = {
           username: data.username,
           full_name: fullName.trim(),
           phone: data.phoneNumber,
-          role: "admin",
         },
       },
     });

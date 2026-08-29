@@ -109,6 +109,11 @@ export function MobileNavbar({
   navigation,
   pathname,
 }: MobileNavbar) {
+  const { logout, isPending } = useLogoutMutation();
+
+  function handleLogout() {
+    logout();
+  }
   return (
     <div
       className="fixed inset-0 z-50 md:hidden bg-black/60 backdrop-blur-sm transition-opacity"
@@ -156,6 +161,14 @@ export function MobileNavbar({
                 </Link>
               );
             })}
+            <button
+              disabled={isPending}
+              onClick={handleLogout}
+              className="flex items-center gap-2 font-medium mb-4 text-[12px] text-red-500 cursor-pointer"
+            >
+              <LogOutIcon size={20} />
+              <span> {isPending ? "Logging out..." : "Logout"}</span>
+            </button>
           </nav>
         </div>
       </aside>
