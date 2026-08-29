@@ -3,8 +3,9 @@
 import { ArrowRight, ExternalLink, Mail } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function VerifyAccount() {
+export function VerifyAccountContent() {
   const searchParams = useSearchParams();
   const emailAddress = searchParams.get("email");
 
@@ -72,6 +73,22 @@ export default function VerifyAccount() {
           </p>
         </div>
       </div>
+    </div>
+  );
+}
+
+export default function VerifyAccount() {
+  return (
+    <Suspense fallback={<VerifyAccountLoading />}>
+      <VerifyAccountContent />
+    </Suspense>
+  );
+}
+
+function VerifyAccountLoading() {
+  return (
+    <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <p className="text-zinc-400 text-sm">Loading...</p>
     </div>
   );
 }
