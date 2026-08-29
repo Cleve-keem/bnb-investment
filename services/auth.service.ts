@@ -1,11 +1,11 @@
+import { supabase } from "@/libs/supabase/browser";
 import {
   forgotPasswordSchema,
   LoginSchemaInput,
   RegisterSchemaInput,
 } from "@/libs/validations/auth";
-import { supabase } from "../supabase/browser";
 
-export const AuthApi = {
+export const AuthService = {
   async login(data: LoginSchemaInput) {
     const { data: result, error } = await supabase.auth.signInWithPassword({
       email: data.email,
@@ -32,13 +32,13 @@ export const AuthApi = {
           username: data.username,
           full_name: fullName.trim(),
           phone: data.phoneNumber,
+          role: "admin",
         },
       },
     });
 
     if (error) {
-      console.error("SUPABASE SIGNUP ERROR:", error);
-      throw error;
+      throw new Error(error.message);
     }
 
     return authData;
@@ -46,5 +46,13 @@ export const AuthApi = {
 
   async forgotPassword() {
     return "change password";
+  },
+
+  async logout() {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      throw new Error(error.message);
+    }
   },
 };

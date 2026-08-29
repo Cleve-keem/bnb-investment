@@ -1,24 +1,50 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { AuthApi } from "@/libs/api/auth.api";
 import { useState } from "react";
+import { AuthService } from "@/services/auth.service";
+import UserService from "@/services/user.service";
 
 export function useLoginMutation() {
   const router = useRouter();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: AuthApi.login,
+    mutationFn: AuthService.login,
 
     onMutate: () => {
       return toast.loading("Verifying credentials...");
     },
 
-    onSuccess: (data, variables, contextToastId) => {
+    onSuccess: async (data, variables, contextToastId) => {
       toast.dismiss(contextToastId);
+      const user = data.user;
+      if (!user) {
+        toast.error("Unable to authenticate user!");
+        return;
+      }
+      // fetch profile
+      const { profile, error } = await UserService.fetchUserProfile(user.id);
+      console.log("Profile:", profile);
+
+      if (error || !profile) {
+        toast.error("Unable to load profile account");
+        return;
+      }
+
+      // Admin
+      if (profile.role === "admin") {
+        toast.success("Welcome back!");
+        router.push("/admin/dashboard");
+        return;
+      }
+
+      if (profile?.first_login) {
+        router.push(`/verify-otp?email=${encodeURIComponent(variables.email)}`);
+        return;
+      }
+
       toast.success(`Welcome back!`);
-      console.log(data);
-      // router.push(`/verify-otp?email=${encodeURIComponent(variables.email)}`);
+      router.push("/dashboard");
     },
 
     onError(error, variables, contextToastId) {
@@ -34,7 +60,7 @@ export function useRegisterMutation() {
   const router = useRouter();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: AuthApi.register,
+    mutationFn: AuthService.register,
 
     onMutate: () => {
       return toast.loading("Processing validation records...");
@@ -111,4 +137,35 @@ export function useForgotPasswordMutation(onSuccessCallback?: () => void) {
   });
 
   return { mutate, isPending, emailSent };
+}
+
+export function useLogoutMutation() {
+  const router = useRouter();
+
+  const { mutate: logout, isPending } = useMutation({
+    mutationFn: AuthService.logout,
+
+    onMutate: () => {
+      return toast.loading("Logging out...");
+    },
+
+    onSuccess: (_, __, toastId) => {
+      toast.success("Logged out successfully", {
+        id: toastId,
+      });
+
+      router.push("/login");
+    },
+
+    onError: (_, __, toastId) => {
+      toast.error("Failed to log out", {
+        id: toastId,
+      });
+    },
+  });
+
+  return {
+    logout,
+    isPending,
+  };
 }
