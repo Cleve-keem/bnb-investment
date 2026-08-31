@@ -1,18 +1,17 @@
 export interface AdminUser {
   id: string;
   email: string;
-  first_name: string;
-  last_name: string;
-  created_at?: string;
-  is_suspended?: boolean;
-  portfolio?: {
-    total_balance?: number;
-    active_yield_rate?: number;
-    pending_allocations?: number;
-  };
-  latest_otp?: {
-    code: string;
-    expires_at: string;
-    is_used?: boolean;
-  };
+  full_name: string | null;
+  username: string | null;
+  role: "user" | "admin";
+  status: "active" | "suspended" | "deactivated";
+  first_login: boolean;
+  email_verified_at: string | null;
+  last_login_at: string | null;
+
+  wallet: {
+    balance: number;
+    locked_balance: number;
+    status: string;
+  } | null;
 }

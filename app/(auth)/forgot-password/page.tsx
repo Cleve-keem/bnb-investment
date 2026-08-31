@@ -109,7 +109,7 @@ export default function ForgotPasswordPage() {
           {/* BACK TO LOGIN ROOT ANCHOR */}
           <div className="mt-6 pt-5 border-t border-zinc-900 flex justify-center">
             <Link
-              href="/auth/login"
+              href="/login"
               className="inline-flex items-center gap-2 text-xs font-medium text-zinc-400 hover:text-[#dabc17] transition-colors group"
             >
               <ArrowLeft

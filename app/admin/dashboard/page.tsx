@@ -35,8 +35,7 @@ export default function AdminDashboardPage() {
   const filteredUsers = users?.filter(
     (u) =>
       u.email?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      u.first_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      u.last_name?.toLowerCase().includes(searchQuery.toLowerCase()),
+      u.full_name?.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
@@ -106,7 +105,7 @@ export default function AdminDashboardPage() {
             <p className="text-xl font-bold text-zinc-100">
               $
               {users
-                ?.reduce((acc, u) => acc + (u.portfolio?.total_balance || 0), 0)
+                ?.reduce((acc, u) => acc + (u.wallet?.balance || 0), 0)
                 .toLocaleString("en-US", { minimumFractionDigits: 2 }) ||
                 "0.00"}
             </p>
@@ -122,8 +121,8 @@ export default function AdminDashboardPage() {
               Active Auth Requests
             </p>
             <p className="text-xl font-bold text-zinc-100">
-              {users?.filter((u) => u.latest_otp && !u.latest_otp.is_used)
-                .length || 0}{" "}
+              {/* {users?.filter((u) => u.latest_otp && !u.latest_otp.is_used) */}
+              {/* .length || 0}{" "} */}
               Pending
             </p>
           </div>
@@ -181,7 +180,7 @@ export default function AdminDashboardPage() {
                     {/* User Identity */}
                     <td className="px-6 py-4">
                       <div className="font-medium text-zinc-200">
-                        {user.first_name || "Investor"} {user.last_name || ""}
+                        {user.full_name || "Investor"}
                       </div>
                       <div className="text-[11px] text-zinc-500">
                         {user.email}
@@ -191,41 +190,41 @@ export default function AdminDashboardPage() {
                     {/* Balance */}
                     <td className="px-6 py-4 font-mono font-semibold text-zinc-200">
                       $
-                      {user.portfolio?.total_balance?.toLocaleString("en-US", {
+                      {user.wallet?.balance?.toLocaleString("en-US", {
                         minimumFractionDigits: 2,
                       })}
                     </td>
 
                     {/* Yield */}
                     <td className="px-6 py-4 font-mono text-emerald-400">
-                      +{user.portfolio?.active_yield_rate}%
+                      {/* +{user.portfolio?.active_yield_rate}% */}
                     </td>
 
                     {/* OTP Security Monitor */}
                     <td className="px-6 py-4">
-                      {user.latest_otp ? (
-                        <div className="flex items-center gap-2">
-                          <span className="font-mono bg-zinc-900 text-[#e9ce39] px-2 py-0.5 rounded border border-[#e9ce3930] text-[11px]">
-                            {user.latest_otp.code}
-                          </span>
-                          {user.latest_otp.is_used ? (
-                            <CheckCircle2 size={12} className="text-zinc-600" />
-                          ) : (
-                            <span className="text-[10px] text-amber-400 animate-pulse">
-                              Active
-                            </span>
-                          )}
-                        </div>
-                      ) : (
-                        <span className="text-zinc-600 text-[11px]">
-                          No active OTP
-                        </span>
-                      )}
+                      {/* {user.latest_otp ? ( */}
+                      {/* <div className="flex items-center gap-2"> */}
+                      <span className="font-mono bg-zinc-900 text-[#e9ce39] px-2 py-0.5 rounded border border-[#e9ce3930] text-[11px]">
+                        {/* {user.latest_otp.code} */}
+                      </span>
+                      {/* {user.latest_otp.is_used ? ( */}
+                      {/* <CheckCircle2 size={12} className="text-zinc-600" /> */}
+                      {/* ) : ( */}
+                      {/* <span className="text-[10px] text-amber-400 animate-pulse"> */}
+                      {/* Active */}
+                      {/* </span> */}
+                      {/* )} */}
+                      {/* </div> */}
+                      {/* ) : ( */}
+                      {/* <span className="text-zinc-600 text-[11px]"> */}
+                      {/* No active OTP */}
+                      {/* </span> */}
+                      {/* )} */}
                     </td>
 
                     {/* Account Access Status */}
                     <td className="px-6 py-4">
-                      {user.is_suspended ? (
+                      {user.status ? (
                         <span className="inline-flex items-center gap-1 text-[10px] text-red-400 bg-red-500/10 px-2 py-0.5 rounded border border-red-500/20">
                           <XCircle size={10} /> Suspended
                         </span>
@@ -238,11 +237,11 @@ export default function AdminDashboardPage() {
 
                     {/* Action Panel */}
                     <td className="px-6 py-4 text-right space-x-2">
-                      <button
+                      {/* <button
                         onClick={() => {
                           setSelectedUser(user);
                           setNewBalance(
-                            user.portfolio?.total_balance?.toString() || "0",
+                            user.wallet.balance?.toString() || "0",
                           );
                           setNewYield(
                             user.portfolio?.active_yield_rate?.toString() ||
@@ -253,22 +252,22 @@ export default function AdminDashboardPage() {
                         title="Edit Capital Node"
                       >
                         <Edit3 size={12} />
-                      </button>
+                      </button> */}
 
                       <button
                         onClick={() =>
                           toggleSuspendMutation.mutate({
                             userId: user.id,
-                            suspend: !user.is_suspended,
+                            suspend: user.status === "suspended",
                           })
                         }
                         className={`p-1.5 rounded-md border transition-colors ${
-                          user.is_suspended
+                          user.status === "suspended"
                             ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20"
                             : "bg-red-500/10 border-red-500/20 text-red-400 hover:bg-red-500/20"
                         }`}
                         title={
-                          user.is_suspended
+                          user.status === "suspended"
                             ? "Reactivate Node"
                             : "Suspend Access"
                         }
@@ -290,8 +289,7 @@ export default function AdminDashboardPage() {
           <div className="bg-[#09090B] border border-[#e9cf3940] w-full max-w-md p-6 rounded-xl shadow-2xl space-y-4">
             <div className="flex justify-between items-center border-b border-zinc-900 pb-3">
               <h3 className="font-semibold text-sm text-zinc-100">
-                Override Balance: {selectedUser.first_name}{" "}
-                {selectedUser.last_name}
+                Override Balance: {selectedUser.full_name}
               </h3>
               <button
                 onClick={() => setSelectedUser(null)}

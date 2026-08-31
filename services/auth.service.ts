@@ -19,6 +19,21 @@ export const AuthService = {
     return result;
   },
 
+  async prepareFirstLoginOtp() {
+    const response = await fetch(`/api/v1/auth/first-login-otp`, {
+      method: "POST",
+      credentials: "include",
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Unable to send verification code.");
+    }
+
+    return result;
+  },
+
   async register(data: RegisterSchemaInput) {
     const fullName = [data.lastname, data.firstname, data.middlename]
       .filter(Boolean)
