@@ -32,7 +32,7 @@ export default function DashboardPage() {
             <p className="text-sm text-zinc-500">Monday, August 31, 2026</p>
 
             <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">
-              Good afternoon, Hackhim 👋
+              Welcome Back, Eve 👋
             </h1>
 
             <p className="mt-2 text-sm text-zinc-500">
@@ -69,13 +69,13 @@ export default function DashboardPage() {
             icon={<TrendingUp size={19} />}
           />
 
-          <StatCard
+          {/* <StatCard
             title="Today's P/L"
             value="+$4,250.00"
             change="+1.43%"
             positive
             icon={<DollarSign size={19} />}
-          />
+          /> */}
         </section>
 
         <section>

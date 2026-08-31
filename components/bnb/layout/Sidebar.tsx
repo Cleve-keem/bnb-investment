@@ -34,11 +34,11 @@ const mainNavigation = [
     href: "/markets",
     icon: BarChart3,
   },
-  {
-    label: "Trade",
-    href: "/trade",
-    icon: Activity,
-  },
+//   {
+//     label: "Trade",
+//     href: "/trade",
+//     icon: Activity,
+//   },
   {
     label: "Portfolio",
     href: "/portfolio",

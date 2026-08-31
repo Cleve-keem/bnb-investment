@@ -38,11 +38,11 @@ export default function DashboardHeader({ onMenu }: Props) {
 
           <button className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.02] p-1.5 pr-3">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#f0b90b] text-sm font-bold text-black">
-              H
+              E
             </div>
 
             <div className="hidden text-left sm:block">
-              <p className="text-xs font-medium">Hackhim</p>
+              <p className="text-xs font-medium">Elisa Eve</p>
               <p className="text-[10px] text-zinc-500">Personal</p>
             </div>
 

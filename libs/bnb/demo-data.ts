@@ -141,38 +141,38 @@ export const holdings = [
 ];
 
 export const transactions: Transaction[] = [
-  {
-    id: "TXN-82931",
-    type: "Deposit",
-    description: "USD wallet deposit",
-    amount: 20000,
-    status: "Completed",
-    date: "Aug 31, 2026",
-  },
-  {
-    id: "TXN-82930",
-    type: "Trade",
-    description: "BTC/USD purchase",
-    amount: -5000,
-    status: "Completed",
-    date: "Aug 30, 2026",
-  },
+  //   {
+  //     id: "TXN-82931",
+  //     type: "Deposit",
+  //     description: "USD wallet deposit",
+  //     amount: 20000,
+  //     status: "Completed",
+  //     date: "Aug 31, 2026",
+  //   },
+  //   {
+  //     id: "TXN-82930",
+  //     type: "Trade",
+  //     description: "BTC/USD purchase",
+  //     amount: -5000,
+  //     status: "Completed",
+  //     date: "Aug 30, 2026",
+  //   },
   {
     id: "TXN-82929",
     type: "Withdrawal",
     description: "BTC withdrawal",
-    amount: -2000,
-    status: "Pending",
-    date: "Aug 29, 2026",
-  },
-  {
-    id: "TXN-82928",
-    type: "Investment",
-    description: "Bitcoin Growth Plan",
-    amount: -10000,
+    amount: -25854.01,
     status: "Completed",
-    date: "Aug 27, 2026",
+    date: "Oct 31, 2025",
   },
+  //   {
+  //     id: "TXN-82928",
+  //     type: "Investment",
+  //     description: "Bitcoin Growth Plan",
+  //     amount: -10000,
+  //     status: "Completed",
+  //     date: "Aug 27, 2026",
+  //   },
 ];
 
 export const aiSignals = [
