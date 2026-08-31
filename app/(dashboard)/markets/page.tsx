@@ -77,14 +77,14 @@ export default function MarketsPage() {
                       {asset.volume}
                     </td>
 
-                    <td className="px-5 py-5">
+                    {/* <td className="px-5 py-5">
                       <a
                         href={`/trade?symbol=${asset.symbol}`}
                         className="rounded-lg bg-[#f0b90b]/10 px-3 py-2 text-xs font-semibold text-[#f0b90b]"
                       >
                         Trade
                       </a>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>

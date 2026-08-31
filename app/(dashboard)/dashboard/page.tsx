@@ -61,13 +61,13 @@ export default function DashboardPage() {
             icon={<Wallet size={19} />}
           />
 
-          {/* <StatCard
+          <StatCard
             title="Total Returns"
             value="+$18,420.00"
             change="+6.14% overall"
             positive
             icon={<TrendingUp size={19} />}
-          /> */}
+          />
 
           {/* <StatCard
             title="Today's P/L"

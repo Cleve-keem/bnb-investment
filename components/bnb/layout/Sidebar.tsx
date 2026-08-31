@@ -52,11 +52,11 @@ const investNavigation = [
     href: "/investments",
     icon: Wallet,
   },
-  {
-    label: "AI Signals",
-    href: "/ai-signals",
-    icon: TrendingUp,
-  },
+  // {
+  //   label: "AI Signals",
+  //   href: "/ai-signals",
+  //   icon: TrendingUp,
+  // },
 ];
 
 const activityNavigation = [
