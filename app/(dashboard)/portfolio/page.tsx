@@ -14,21 +14,21 @@ export default function PortfolioPage() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-3">
-          <Metric title="Total Value" value="$300,000" />
-          <Metric title="Total Invested" value="$240,000" />
-          <Metric title="Total Return" value="+$18,420" />
+          <Metric title="Total Value" value="$352,728.26" />
+          <Metric title="Total Invested" value="$321,520.45" />
+          {/* <Metric title="Total Return" value="+$18,420" /> */}
         </div>
 
         <PortfolioChart />
 
-        <div className="overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0d131a]">
-          <div className="border-b border-white/[0.06] p-5">
+        <div className="overflow-hidden rounded-2xl border border-white/6 bg-[#0d131a]">
+          <div className="border-b border-white/6 p-5">
             <h2 className="font-medium">Holdings</h2>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[650px]">
-              <thead className="border-b border-white/[0.05] text-left text-xs text-zinc-600">
+            <table className="w-full min-w-162.5">
+              <thead className="border-b border-white/5 text-left text-xs text-zinc-600">
                 <tr>
                   <th className="px-5 py-4">Asset</th>
                   <th className="px-5 py-4">Amount</th>
@@ -42,7 +42,7 @@ export default function PortfolioPage() {
                 {holdings.map((holding) => (
                   <tr
                     key={holding.symbol}
-                    className="border-b border-white/[0.04] last:border-0"
+                    className="border-b border-white/4 last:border-0"
                   >
                     <td className="px-5 py-5">
                       <p className="text-sm font-medium">{holding.symbol}</p>
@@ -59,7 +59,7 @@ export default function PortfolioPage() {
 
                     <td className="px-5 py-5">
                       <div className="flex items-center gap-3">
-                        <div className="h-1.5 w-24 overflow-hidden rounded-full bg-white/[0.06]">
+                        <div className="h-1.5 w-24 overflow-hidden rounded-full bg-white/6">
                           <div
                             className="h-full rounded-full bg-[#f0b90b]"
                             style={{ width: `${holding.allocation}%` }}
@@ -88,7 +88,7 @@ export default function PortfolioPage() {
 
 function Metric({ title, value }: { title: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-[#0d131a] p-5">
+    <div className="rounded-2xl border border-white/6 bg-[#0d131a] p-5">
       <p className="text-xs text-zinc-500">{title}</p>
       <p className="mt-3 text-2xl font-semibold">{value}</p>
     </div>

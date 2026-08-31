@@ -12,7 +12,7 @@ import {
 
 export default function PortfolioChart() {
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-[#0d131a] p-5">
+    <div className="rounded-2xl border border-white/6 bg-[#0d131a] p-5">
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm font-medium text-white">
@@ -24,7 +24,7 @@ export default function PortfolioChart() {
           </p>
         </div>
 
-        <div className="flex gap-1 rounded-lg bg-white/[0.03] p-1">
+        <div className="flex gap-1 rounded-lg bg-white/3 p-1">
           {["1D", "1W", "1M", "3M", "6M", "1Y"].map((range, index) => (
             <button
               key={range}

@@ -141,14 +141,70 @@ export const holdings = [
 ];
 
 export const transactions: Transaction[] = [
-  //   {
-  //     id: "TXN-82931",
-  //     type: "Deposit",
-  //     description: "USD wallet deposit",
-  //     amount: 20000,
-  //     status: "Completed",
-  //     date: "Aug 31, 2026",
-  //   },
+  {
+    id: "TXN-82938",
+    type: "Deposit",
+    description: "USD wallet deposit",
+    amount: 1247,
+    status: "Completed",
+    date: "Aug 28, 2026",
+  },
+  {
+    id: "TXN-82937",
+    type: "Deposit",
+    description: "USD wallet deposit",
+    amount: 2912,
+    status: "Completed",
+    date: "Aug 21, 2026",
+  },
+  {
+    id: "TXN-82936",
+    type: "Deposit",
+    description: "USD wallet deposit",
+    amount: 325,
+    status: "Completed",
+    date: "Jul 18, 2026",
+  },
+  {
+    id: "TXN-82935",
+    type: "Deposit",
+    description: "USD wallet deposit",
+    amount: 1228,
+    status: "Completed",
+    date: "Jul 16, 2026",
+  },
+  {
+    id: "TXN-82934",
+    type: "Deposit",
+    description: "USD wallet deposit",
+    amount: 1414,
+    status: "Completed",
+    date: "Jun 18, 2026",
+  },
+  {
+    id: "TXN-82933",
+    type: "Deposit",
+    description: "USD wallet deposit",
+    amount: 1720,
+    status: "Completed",
+    date: "Jun 1, 2026",
+  },
+  {
+    id: "TXN-82932",
+    type: "Deposit",
+    description: "USD wallet deposit",
+    amount: 3300,
+    status: "Completed",
+    date: "May 22, 2026",
+  },
+  {
+    id: "TXN-82921",
+    type: "Investment",
+    description: "Digital Assest Plan",
+    amount: 104840,
+    status: "Completed",
+    date: "Jun 7, 2024",
+  },
   //   {
   //     id: "TXN-82930",
   //     type: "Trade",
@@ -158,21 +214,37 @@ export const transactions: Transaction[] = [
   //     date: "Aug 30, 2026",
   //   },
   {
-    id: "TXN-82929",
+    id: "TXN-82930",
     type: "Withdrawal",
     description: "BTC withdrawal",
     amount: -25854.01,
     status: "Completed",
     date: "Oct 31, 2025",
   },
-  //   {
-  //     id: "TXN-82928",
-  //     type: "Investment",
-  //     description: "Bitcoin Growth Plan",
-  //     amount: -10000,
-  //     status: "Completed",
-  //     date: "Aug 27, 2026",
-  //   },
+  {
+    id: "TXN-82929",
+    type: "Deposit",
+    description: "BNB investment funding",
+    amount: 104840,
+    status: "Completed",
+    date: "Jun 2, 2024",
+  },
+  {
+    id: "TXN-82928",
+    type: "Investment",
+    description: "BNB Growth Plan",
+    amount: -26210,
+    status: "Completed",
+    date: "May 31, 2023",
+  },
+  {
+    id: "TXN-82927",
+    type: "Deposit",
+    description: "USD wallet deposit",
+    amount: 26210,
+    status: "Completed",
+    date: "May 24, 2023",
+  },
 ];
 
 export const aiSignals = [
@@ -208,12 +280,13 @@ export const aiSignals = [
 
 export const investments = [
   {
-    name: "Bitcoin Growth Plan",
-    invested: 50000,
-    currentValue: 54820,
-    return: 4820,
-    progress: 82,
-    maturity: "42 days",
+    name: "BNB Growth Plan",
+    invested: 26210,
+    currentValue: 104840,
+    return: 78630,
+    progress: 100,
+    maturity: "365 days",
+    status: "Completed",
   },
   {
     name: "BNB Premium Plan",
@@ -222,6 +295,7 @@ export const investments = [
     return: 6650,
     progress: 67,
     maturity: "78 days",
+    status: "Active",
   },
   {
     name: "Digital Assets Plan",
@@ -230,5 +304,6 @@ export const investments = [
     return: 10370,
     progress: 91,
     maturity: "18 days",
+    status: "Active",
   },
 ];

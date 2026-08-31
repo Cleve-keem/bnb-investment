@@ -8,7 +8,7 @@ export default function TopMovers() {
     .slice(0, 5);
 
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-[#0d131a] p-5">
+    <div className="rounded-2xl border border-white/6 bg-[#0d131a] p-5">
       <div className="mb-5 flex items-center justify-between">
         <div>
           <p className="text-sm font-medium">Top Movers</p>
@@ -27,7 +27,7 @@ export default function TopMovers() {
       <div className="space-y-4">
         {movers.map((asset) => (
           <div key={asset.symbol} className="flex items-center">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.05] text-xs font-bold">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-xs font-bold">
               {asset.icon}
             </div>
 

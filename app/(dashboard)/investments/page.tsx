@@ -12,11 +12,11 @@ export default function InvestmentsPage() {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-3">
+        {/* <div className="grid gap-4 sm:grid-cols-3">
           <Metric title="Invested" value="$240,000" />
           <Metric title="Current Value" value="$261,840" />
           <Metric title="Total Return" value="+$21,840" />
-        </div>
+        </div> */}
 
         <div className="grid gap-5 lg:grid-cols-2">
           {investments.map((investment) => (
@@ -33,7 +33,7 @@ export default function InvestmentsPage() {
                 </div>
 
                 <span className="rounded-lg bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold text-emerald-400">
-                  ACTIVE
+                  {investment.status}
                 </span>
               </div>
 

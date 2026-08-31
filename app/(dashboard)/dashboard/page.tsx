@@ -49,7 +49,7 @@ export default function DashboardPage() {
         <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <StatCard
             title="Total Portfolio"
-            value="$300,000.00"
+            value="$352,728.26"
             change="+4.34% today"
             positive
             icon={<BriefcaseBusiness size={19} />}
@@ -57,17 +57,17 @@ export default function DashboardPage() {
 
           <StatCard
             title="Available Balance"
-            value="$60,000.00"
+            value="$321,520.45"
             icon={<Wallet size={19} />}
           />
 
-          <StatCard
+          {/* <StatCard
             title="Total Returns"
             value="+$18,420.00"
             change="+6.14% overall"
             positive
             icon={<TrendingUp size={19} />}
-          />
+          /> */}
 
           {/* <StatCard
             title="Today's P/L"

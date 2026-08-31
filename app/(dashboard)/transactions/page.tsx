@@ -4,7 +4,7 @@ import DashboardShell from "@/components/bnb/layout/DashBoardShell";
 import { transactions } from "@/libs/bnb/demo-data";
 import { useState } from "react";
 
-const filters = ["All", "Deposit", "Withdrawal", "Trade", "Investment"];
+const filters = ["All", "Deposit", "Withdrawal", "Investment"];
 
 export default function TransactionsPage() {
   const [filter, setFilter] = useState("All");
