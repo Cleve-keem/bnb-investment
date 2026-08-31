@@ -1,4 +1,5 @@
 import { supabase } from "@/libs/supabase/browser";
+import adminService from "@/services/admin.service";
 import { AdminUser } from "@/types/admin";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
@@ -12,47 +13,38 @@ export function useAdminDashboardList() {
   } = useQuery({
     queryKey: ["admin-users-list"],
     queryFn: async () => {
-      // Fetch users base profile
-      const { data: profiles, error: profileErr } = await supabase
-        .from("users")
-        .select("id, email, first_name, last_name");
+      const { profiles, error: profileErr } =
+        await adminService.fetchUserProfiles();
 
-      if (profileErr) throw profileErr;
+      if (profileErr) {
+        throw new Error(profileErr.message);
+      }
 
-      // Fetch all portfolios
-      const { data: portfolios } = await supabase
-        .from("portfolios")
-        .select("*");
+      const { wallets, error: walletsErr } =
+        await adminService.fetchUserWallets();
 
-      //   Fetch active/latest OTPs
-      const { data: otps } = await supabase
-        .from("security_otps")
-        .select("user_id, email, otp_code, expires_at");
+      if (walletsErr) {
+        throw new Error(walletsErr.message);
+      }
 
-      // Merge data models
-      const merged: AdminUser[] = (profiles || []).map((user) => {
-        const userPort = portfolios?.find((p) => p.user_id === user.id);
-        const userOtp = otps?.find(
-          (o) => o.user_id === user.id || o?.email === user.email,
-        );
+      const { otps, error: otpErr } = await adminService.fetchUserOtps();
+
+      if (otpErr) {
+        throw new Error(otpErr.message);
+      }
+
+      const merged = (profiles ?? []).map((user) => {
+        const wallet = wallets?.find((wallet) => wallet.user_id === user.id);
+        const userOtp = otps?.find((o) => o.user_id === user?.id);
 
         return {
           ...user,
-          portfolio: userPort
-            ? {
-                total_balance: userPort.total_balance ?? 0,
-                active_yield_rate: userPort.active_yield_rate ?? 0,
-                pending_allocations: userPort.pending_allocations ?? 0,
-              }
-            : {
-                total_balance: 0,
-                active_yield_rate: 0,
-                pending_allocations: 0,
-              },
+          wallet: wallet ?? null,
           latest_otp: userOtp
             ? {
-                code: userOtp.otp_code,
+                code: userOtp.otp_code_hash,
                 expires_at: userOtp.expires_at,
+                is_used: userOtp.is_used,
               }
             : undefined,
         };

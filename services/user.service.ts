@@ -1,7 +1,7 @@
 import { supabase } from "@/libs/supabase/browser";
 
 const UserService = {
-  async fetchUserProfile(userId: string) {
+  async fetchUserProfileById(userId: string) {
     const { data: profile, error } = await supabase
       .from("users")
       .select("*")
@@ -10,7 +10,7 @@ const UserService = {
 
     return { profile, error };
   },
-  
+
   async getUserByEmail(email: string) {
     const { data: userProfile, error: profileError } = await supabase
       .from("users")
@@ -20,20 +20,8 @@ const UserService = {
 
     return { userProfile, profileError };
   },
+
+  
 };
 
 export default UserService;
-
-// export default class UserService {
-
-//   static async getUserProfile(userId: string) {
-//     const { data, error } = await supabase
-//       .from("users")
-//       .select("*")
-//       .eq("id", userId)
-//       .single();
-
-//     if (error) throw error;
-//     return data;
-//   }
-// }

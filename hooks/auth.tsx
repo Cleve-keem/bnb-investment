@@ -17,20 +17,23 @@ export function useLoginMutation() {
 
     onSuccess: async (data, variables, contextToastId) => {
       toast.dismiss(contextToastId);
+
       const user = data.user;
+      console.log("user", user);
       if (!user) {
         toast.error("Unable to authenticate user!");
         return;
       }
       // fetch profile
-      const { profile, error } = await UserService.fetchUserProfile(user.id);
+      const { profile, error } = await UserService.fetchUserProfileById(
+        user.id,
+      );
       console.log("Profile:", profile);
 
       if (error || !profile) {
         toast.error("Unable to load profile account");
         return;
       }
-
       // Admin
       if (profile.role === "admin") {
         toast.success("Welcome back!");
@@ -39,8 +42,21 @@ export function useLoginMutation() {
       }
 
       if (profile?.first_login) {
-        router.push(`/verify-otp?email=${encodeURIComponent(variables.email)}`);
-        return;
+        try {
+          await AuthService.prepareFirstLoginOtp();
+          toast.success("Verification code sent to your email.");
+          router.push(
+            `/verify-otp?email=${encodeURIComponent(variables.email)}`,
+          );
+          return;
+        } catch (error) {
+          toast.error(
+            error instanceof Error
+              ? error.message
+              : "Unable to send verification code.",
+          );
+          return;
+        }
       }
 
       toast.success(`Welcome back!`);
