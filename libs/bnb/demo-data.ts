@@ -142,6 +142,14 @@ export const holdings = [
 
 export const transactions: Transaction[] = [
   {
+    id: "TXN-8293a",
+    type: "Withdrawal",
+    description: "BTC withdrawal",
+    amount: -25854.01,
+    status: "Completed",
+    date: "Oct 31, 2025",
+  },
+  {
     id: "TXN-82938",
     type: "Deposit",
     description: "USD wallet deposit",
@@ -201,7 +209,7 @@ export const transactions: Transaction[] = [
     id: "TXN-82921",
     type: "Investment",
     description: "Digital Assest Plan",
-    amount: 104840,
+    amount: -104840,
     status: "Completed",
     date: "Jun 7, 2024",
   },
@@ -213,13 +221,14 @@ export const transactions: Transaction[] = [
   //     status: "Completed",
   //     date: "Aug 30, 2026",
   //   },
+
   {
     id: "TXN-82930",
-    type: "Withdrawal",
-    description: "BTC withdrawal",
-    amount: -25854.01,
+    type: "Deposit",
+    description: "Annual Bonus",
+    amount: 21680.0,
     status: "Completed",
-    date: "Oct 31, 2025",
+    date: "Jun 2, 2025",
   },
   {
     id: "TXN-82929",
