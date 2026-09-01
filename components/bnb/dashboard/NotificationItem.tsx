@@ -14,7 +14,7 @@ import {
 interface NotificationItemProps {
   notification: Notification;
   onRead: (id: string) => void;
-  onRemove: (id: string) => void;
+  onRemove?: (id: string) => void;
 }
 
 export default function NotificationItem({
