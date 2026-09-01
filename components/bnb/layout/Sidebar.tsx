@@ -168,12 +168,12 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
           <div className="mb-4 rounded-2xl border border-white/[0.06] bg-white/[0.025] p-3">
             <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-800 text-sm font-semibold">
-                H
+                E
               </div>
 
               <div className="min-w-0">
-                <p className="truncate text-sm font-medium">Hackhim</p>
-                <p className="truncate text-xs text-zinc-500">Demo account</p>
+                <p className="truncate text-sm font-medium">Elisa Eve</p>
+                <p className="truncate text-xs text-zinc-500">Tier 3 account</p>
               </div>
             </div>
           </div>

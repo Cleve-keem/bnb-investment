@@ -3,6 +3,7 @@ import { ArrowDownLeft, ArrowUpRight, ChevronRight } from "lucide-react";
 import { transactions } from "@/libs/bnb/demo-data";
 
 export default function RecentTransactions() {
+  const recentTransaction = transactions.slice(0, 6);
   return (
     <div className="rounded-2xl border border-white/6 bg-[#0d131a] p-5">
       <div className="mb-5 flex items-center justify-between">
@@ -21,7 +22,7 @@ export default function RecentTransactions() {
       </div>
 
       <div className="space-y-3">
-        {transactions.map((transaction) => {
+        {recentTransaction.map((transaction) => {
           const positive = transaction.amount > 0;
 
           return (

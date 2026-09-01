@@ -28,7 +28,6 @@ export function useLoginMutation() {
       const { profile, error } = await UserService.fetchUserProfileById(
         user.id,
       );
-      console.log("Profile:", profile);
 
       if (error || !profile) {
         toast.error("Unable to load profile account");
@@ -43,8 +42,8 @@ export function useLoginMutation() {
 
       if (profile?.first_login) {
         try {
-          await AuthService.prepareFirstLoginOtp();
-          toast.success("Verification code sent to your email.");
+          // await AuthService.prepareFirstLoginOtp();
+          // toast.success("Verification code sent to your email.");
           router.push(
             `/verify-otp?email=${encodeURIComponent(variables.email)}`,
           );

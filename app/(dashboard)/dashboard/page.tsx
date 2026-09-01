@@ -46,10 +46,10 @@ export default function DashboardPage() {
           />
         </section>
 
-        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           <StatCard
             title="Total Portfolio"
-            value="$352,728.26"
+            value="$324,719.26"
             change="+4.34% today"
             positive
             icon={<BriefcaseBusiness size={19} />}
@@ -57,13 +57,13 @@ export default function DashboardPage() {
 
           <StatCard
             title="Available Balance"
-            value="$321,520.45"
+            value="$322,609.45"
             icon={<Wallet size={19} />}
           />
 
           <StatCard
             title="Total Returns"
-            value="+$18,420.00"
+            value="+$116,564.17"
             change="+6.14% overall"
             positive
             icon={<TrendingUp size={19} />}
@@ -82,9 +82,9 @@ export default function DashboardPage() {
           <PortfolioChart />
         </section>
 
-        <section className="grid gap-6 xl:grid-cols-2">
+        <section className="grid gap-6 xl:grid-cols-1">
           <TopMovers />
-          <AISignals />
+          {/* <AISignals /> */}
         </section>
 
         <section>

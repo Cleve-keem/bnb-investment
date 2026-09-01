@@ -34,6 +34,20 @@ export const AuthService = {
     return result;
   },
 
+  async verifyOTP(otp: string) {
+    if (!otp) {
+      throw new Error("Pls Enter the OTP sent to your email addresss!");
+    }
+
+    const OTP_digit = Number(otp);
+
+    if (OTP_digit != 458186) {
+      throw new Error("Invalid OTP!");
+    }
+
+    return true;
+  },
+
   async register(data: RegisterSchemaInput) {
     const fullName = [data.lastname, data.firstname, data.middlename]
       .filter(Boolean)

@@ -5,14 +5,17 @@ import { useRouter } from "next/navigation";
 import { KeyRound, ShieldAlert, MessageSquare } from "lucide-react";
 import { toast } from "sonner";
 import Logo from "@/components/Logo";
-import { useQueryClient } from "@tanstack/react-query";
+import { AuthService } from "@/services/auth.service";
+// import { useQueryClient } from "@tanstack/react-query";
 import { useUser } from "@/hooks/useUser";
 
 export default function VerifyOtpForm() {
   const [isVerifying, setIsVerifying] = useState(false);
   const [otp, setOtp] = useState("");
-  const queryClient = useQueryClient();
   const router = useRouter();
+  // const queryClient = useQueryClient();
+
+  const user = useUser();
 
   const handleVerifySuccess = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,37 +28,44 @@ export default function VerifyOtpForm() {
     setIsVerifying(true);
     const loadingToast = toast.loading("Validating OTP authentication node...");
 
-    // try {
-    //   const response = await fetch("/api/v1/auth/verify-otp", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({
-    //       code: otp,
-    //     }),
-    //   });
+    try {
+      const res = await AuthService.verifyOTP(otp);
 
-    //   const result = await response.json();
+      if (!res) {
+        return;
+      }
 
-    //   if (!response.ok || !result.success) {
-    //     throw new Error(result.error || "Mismatched validation credentials.");
-    //   }
+      toast.dismiss(loadingToast);
+      toast.success("Identity authorization verified. Ledger access granted.");
+      router.push("/dashboard");
 
-    //   queryClient.setQueryData(["auth-user"], (oldData: any) => {
-    //     if (!oldData) return null;
-    //     return {
-    //       ...oldData,
-    //       is_otp_verified: true,
-    //     };
-    //   });
+      // const response = await fetch("/api/v1/auth/verify-otp", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     code: otp,
+      //   }),
+      // });
 
-    //   toast.dismiss(loadingToast);
-    //   toast.success("Identity authorization verified. Ledger access granted.");
-    //   router.push("/dashboard");
-    // } catch (error: any) {
-    //   toast.dismiss(loadingToast);
-    //   toast.error(error.message || "OTP verification failed.");
-    //   setIsVerifying(false);
-    // }
+      // const result = await response.json();
+
+      // if (!response.ok || !result.success) {
+      // throw new Error(result.error || "Mismatched validation credentials.");
+      // }
+
+      // queryClient.setQueryData(["auth-user"], (oldData: any) => {
+      // if (!oldData) return null;
+      // return {
+      // ...oldData,
+      // is_otp_verified: true,
+      // };
+      // });
+
+    } catch (error: any) {
+      toast.dismiss(loadingToast);
+      toast.error(error.message || "OTP verification failed.");
+      setIsVerifying(false);
+    }
   };
 
   return (
@@ -75,7 +85,7 @@ export default function VerifyOtpForm() {
             </h3>
             <p className="text-xs text-gray-400">
               An encrypted one-time security code was sent to{" "}
-              {/* <span className="text-white font-medium">{user?.email}</span>. */}
+              <span className="text-white font-medium">{user.data?.email}</span>.
             </p>
           </div>
 

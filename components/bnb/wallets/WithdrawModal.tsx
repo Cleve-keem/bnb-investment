@@ -16,7 +16,7 @@ export default function WithdrawModal({ open, onClose }: Props) {
   const [address, setAddress] = useState("");
   const [amount, setAmount] = useState("");
 
-  const available = 60000;
+  const available = 322609;
   const fee = 12.4;
   const numericAmount = Number(amount) || 0;
   const receive = Math.max(numericAmount - fee, 0);
@@ -79,7 +79,7 @@ export default function WithdrawModal({ open, onClose }: Props) {
             <h3 className="mt-5 text-lg font-semibold">Withdrawal submitted</h3>
 
             <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-zinc-500">
-              Your withdrawal request is now pending review in this demo.
+              Your withdrawal request is now pending review. A confirmation link will be sent to elisaeve5628@gmail.com 
             </p>
 
             <button

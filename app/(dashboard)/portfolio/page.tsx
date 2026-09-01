@@ -14,8 +14,8 @@ export default function PortfolioPage() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-3">
-          <Metric title="Total Value" value="$352,728.26" />
-          <Metric title="Total Invested" value="$321,520.45" />
+          <Metric title="Total Value" value="$324,719.26" />
+          <Metric title="Total Invested" value="$322,609.45" />
           {/* <Metric title="Total Return" value="+$18,420" /> */}
         </div>
 
