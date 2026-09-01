@@ -674,36 +674,36 @@ export interface Notification {
 }
 
 export const notifications: Notification[] = [
-  {
-    id: "1",
-    title: "Trade Executed",
-    message: "Your BTC/USD market order has been successfully executed.",
-    type: "investment",
-    time: "2 minutes ago",
-    read: false,
-  },
-  {
-    id: "2",
-    title: "Deposit Confirmed",
-    message: "Your $5,000 USDT deposit has been successfully confirmed.",
-    type: "deposit",
-    time: "1 hour ago",
-    read: false,
-  },
-  {
-    id: "3",
-    title: "AI Trading Signal",
-    message: "A new BTC/USD bullish signal is available on your dashboard.",
-    type: "investment",
-    time: "3 hours ago",
-    read: false,
-  },
+  // {
+  //   id: "1",
+  //   title: "Trade Executed",
+  //   message: "Your BTC/USD market order has been successfully executed.",
+  //   type: "investment",
+  //   time: "2 minutes ago",
+  //   read: false,
+  // },
+  // {
+  //   id: "2",
+  //   title: "Deposit Confirmed",
+  //   message: "Your $5,000 USDT deposit has been successfully confirmed.",
+  //   type: "deposit",
+  //   time: "1 hour ago",
+  //   read: false,
+  // },
+  // {
+  //   id: "3",
+  //   title: "AI Trading Signal",
+  //   message: "A new BTC/USD bullish signal is available on your dashboard.",
+  //   type: "investment",
+  //   time: "3 hours ago",
+  //   read: false,
+  // },
   {
     id: "4",
     title: "Security Alert",
     message: "A new login was detected on your BNB account.",
     type: "security",
-    time: "Yesterday",
+    time: "Today",
     read: true,
   },
   {
@@ -712,7 +712,7 @@ export const notifications: Notification[] = [
     message:
       "BNB trading services have been updated with improved performance.",
     type: "system",
-    time: "2 days ago",
+    time: "2hrs ago",
     read: true,
   },
 ];
@@ -738,9 +738,9 @@ export const faqs = [
     answer:
       "Your recent trades and account activity are available from the Transactions section of your BNB dashboard.",
   },
-  {
-    question: "How do AI trading signals work?",
-    answer:
-      "AI signals are informational indicators generated from market data and technical patterns. They are not guarantees of future market performance.",
-  },
+  // {
+  //   question: "How do AI trading signals work?",
+  //   answer:
+  //     "AI signals are informational indicators generated from market data and technical patterns. They are not guarantees of future market performance.",
+  // },
 ];
