@@ -10,6 +10,7 @@ import {
   User,
 } from "lucide-react";
 import DashboardShell from "@/components/bnb/layout/DashBoardShell";
+import LogoutButton from "@/components/bnb/profile/LogoutButton";
 
 export default function ProfilePage() {
   const [saved, setSaved] = useState(false);
@@ -23,11 +24,15 @@ export default function ProfilePage() {
   return (
     <DashboardShell>
       <div className="mx-auto max-w-5xl space-y-6">
-        <div>
-          <h1 className="text-3xl font-semibold">Profile</h1>
-          <p className="mt-2 text-sm text-zinc-500">
-            Manage your personal information and account security.
-          </p>
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h1 className="text-3xl font-semibold">Profile</h1>
+            <p className="mt-2 text-sm text-zinc-500">
+              Manage your personal information and account security.
+            </p>
+          </div>
+
+          <LogoutButton />
         </div>
 
         <div className="overflow-hidden rounded-3xl border border-white/6 bg-[#0d131a]">
@@ -73,7 +78,11 @@ export default function ProfilePage() {
                 value="Jimby00000@gmail.com"
               />
 
-              <Field label="Phone" icon={<Phone size={16} />} value="+1 (810) 991-4117" />
+              <Field
+                label="Phone"
+                icon={<Phone size={16} />}
+                value="+1 (810) 991-4117"
+              />
             </div>
 
             <button
