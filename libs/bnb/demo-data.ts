@@ -656,3 +656,91 @@ export const investments = [
 //     status: "Completed",
 //   },
 // ];
+
+export type NotificationType =
+  | "investment"
+  | "deposit"
+  | "withdrawal"
+  | "security"
+  | "system";
+
+export interface Notification {
+  id: string;
+  title: string;
+  message: string;
+  type: NotificationType;
+  time: string;
+  read: boolean;
+}
+
+export const notifications: Notification[] = [
+  {
+    id: "1",
+    title: "Trade Executed",
+    message: "Your BTC/USD market order has been successfully executed.",
+    type: "investment",
+    time: "2 minutes ago",
+    read: false,
+  },
+  {
+    id: "2",
+    title: "Deposit Confirmed",
+    message: "Your $5,000 USDT deposit has been successfully confirmed.",
+    type: "deposit",
+    time: "1 hour ago",
+    read: false,
+  },
+  {
+    id: "3",
+    title: "AI Trading Signal",
+    message: "A new BTC/USD bullish signal is available on your dashboard.",
+    type: "investment",
+    time: "3 hours ago",
+    read: false,
+  },
+  {
+    id: "4",
+    title: "Security Alert",
+    message: "A new login was detected on your BNB account.",
+    type: "security",
+    time: "Yesterday",
+    read: true,
+  },
+  {
+    id: "5",
+    title: "System Update",
+    message:
+      "BNB trading services have been updated with improved performance.",
+    type: "system",
+    time: "2 days ago",
+    read: true,
+  },
+];
+
+export const faqs = [
+  {
+    question: "How do I deposit funds?",
+    answer:
+      "Open the Deposit section from your dashboard, choose your preferred asset and network, enter the amount, and follow the instructions displayed on screen.",
+  },
+  {
+    question: "How do I withdraw my funds?",
+    answer:
+      "Open Withdraw, select the asset you want to withdraw, enter the destination wallet address and amount, review the transaction details carefully, then confirm the request.",
+  },
+  {
+    question: "How long does a withdrawal take?",
+    answer:
+      "Withdrawal processing time depends on the selected network and the current transaction queue. You can monitor the status from your transaction history.",
+  },
+  {
+    question: "Where can I see my trading history?",
+    answer:
+      "Your recent trades and account activity are available from the Transactions section of your BNB dashboard.",
+  },
+  {
+    question: "How do AI trading signals work?",
+    answer:
+      "AI signals are informational indicators generated from market data and technical patterns. They are not guarantees of future market performance.",
+  },
+];

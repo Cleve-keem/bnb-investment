@@ -132,10 +132,10 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
           Settings
         </Link>
 
-        <button className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm text-zinc-400 transition hover:bg-white/[0.04] hover:text-white">
+        <Link href="/help" className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm text-zinc-400 transition hover:bg-white/[0.04] hover:text-white">
           <CircleHelp size={18} />
           Help & Support
-        </button>
+        </Link>
       </div>
     </>
   );
