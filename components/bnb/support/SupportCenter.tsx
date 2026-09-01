@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-
 export default function SupportCenter() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -67,11 +66,12 @@ export default function SupportCenter() {
                 </a> */}
 
                 <a
-                  href="tel:+1 (810) 991-4117"
+                  href="sms:+19039174548"
                   className="inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.04] px-5 py-3 text-sm font-medium text-gray-300 transition hover:bg-white/[0.07] hover:text-white"
                 >
-                  <Phone size={16} />
-                  +1 (810) 991-4117
+                  {/* <Phone size={16} /> */}
+                  <MessageCircle size={23} />
+                  +1 (903) 917-4548
                 </a>
               </div>
             </div>
