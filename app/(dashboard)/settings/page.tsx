@@ -30,7 +30,7 @@ export default function SettingsPage() {
             <select className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-2 text-sm outline-none">
               <option className="bg-[#10161e]">USD</option>
               <option className="bg-[#10161e]">EUR</option>
-              <option className="bg-[#10161e]">NGN</option>
+              {/* <option className="bg-[#10161e]">NGN</option> */}
             </select>
           </SettingRow>
 
