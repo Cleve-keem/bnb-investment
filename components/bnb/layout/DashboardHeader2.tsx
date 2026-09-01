@@ -80,7 +80,7 @@ export default function DashboardHeader({ onMenu }: Props) {
 
       toast.success("You have been logged out.");
 
-      router.replace("/auth/login");
+      router.replace("/login");
       router.refresh();
     } catch (error) {
       console.error("Logout error:", error);
