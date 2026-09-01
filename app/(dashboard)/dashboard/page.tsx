@@ -14,11 +14,11 @@ import StatCard from "@/components/bnb/dashboard/StatCard";
 import QuickActions from "@/components/bnb/dashboard/QuickActions";
 import PortfolioChart from "@/components/bnb/dashboard/PortfolioChart";
 import TopMovers from "@/components/bnb/dashboard/TopMovers";
-import AISignals from "@/components/bnb/dashboard/AISignals";
 import RecentTransactions from "@/components/bnb/dashboard/RecentTransactions";
 import DashboardShell from "@/components/bnb/layout/DashBoardShell";
 import DepositModal from "@/components/bnb/wallets/DepositModal";
 import WithdrawModal from "@/components/bnb/wallets/WithdrawModal";
+import { formatLongDate } from "@/libs/formatter/date";
 
 export default function DashboardPage() {
   const [depositOpen, setDepositOpen] = useState(false);
@@ -29,7 +29,7 @@ export default function DashboardPage() {
       <div className="space-y-6">
         <section className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-sm text-zinc-500">Monday, August 31, 2026</p>
+            <p className="text-sm text-zinc-500">{formatLongDate()}</p>
 
             <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">
               Welcome Back, Eve 👋

@@ -2,7 +2,7 @@
 
 import { Bell, Menu, Search, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import NotificationPanel from "../dashboard/NotificationPanel";
+import NotificationPanel from "../dashboard/NotificationPanel2";
 
 type Props = {
   onMenu: () => void;
@@ -42,6 +42,10 @@ export default function DashboardHeader({ onMenu }: Props) {
             <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-[#f0b90b]" />
           </button>
 
+          {/* <NotificationPanel
+            open={notificationsOpen}
+            onClose={() => setNotificationsOpen(false)}
+          /> */}
           <NotificationPanel
             open={notificationsOpen}
             onClose={() => setNotificationsOpen(false)}

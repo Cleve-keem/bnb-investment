@@ -75,7 +75,7 @@ export default function ProfilePage() {
               <Field
                 label="Email"
                 icon={<Mail size={16} />}
-                value="Jimby00000@gmail.com"
+                value="Jimby10017@gmail.com"
               />
 
               <Field

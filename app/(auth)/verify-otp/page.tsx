@@ -74,7 +74,7 @@ export default function VerifyOtpForm() {
         <div className="flex flex-col items-center gap-2 mb-8">
           <Logo />
           <h2 className="text-xl font-semibold">
-            <span className="text-[#e9ce39]">BNB</span> Security Node
+            <span className="text-[#e9ce39]">BNB</span> Security
           </h2>
         </div>
 
