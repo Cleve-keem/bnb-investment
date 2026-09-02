@@ -41,8 +41,8 @@ export default function WithdrawModal({ open, onClose }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-lg rounded-3xl border border-white/[0.08] bg-[#10161e] p-5 shadow-2xl sm:p-6">
+    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
+      <div className="w-full max-w-lg rounded-3xl border border-white/8 bg-[#10161e] p-5 shadow-2xl sm:p-6">
         <div className="mb-6 flex items-start justify-between">
           <div>
             <h2 className="text-xl font-semibold">
@@ -91,7 +91,7 @@ export default function WithdrawModal({ open, onClose }: Props) {
           </div>
         ) : step === "review" ? (
           <div>
-            <div className="space-y-3 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4">
+            <div className="space-y-3 rounded-2xl border border-white/6 bg-white/2 p-4">
               <SummaryRow label="Asset" value={asset} />
               <SummaryRow label="Network" value={network} />
               <SummaryRow
@@ -106,7 +106,7 @@ export default function WithdrawModal({ open, onClose }: Props) {
                 </p>
               </div>
 
-              <div className="border-t border-white/[0.06] pt-3">
+              <div className="border-t border-white/6 pt-3">
                 <SummaryRow label="Network fee" value={`$${fee.toFixed(2)}`} />
 
                 <div className="mt-3 flex items-center justify-between">

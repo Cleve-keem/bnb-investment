@@ -111,26 +111,3 @@ create index if not exists user_devices_last_used_idx
 
 create index if not exists user_devices_active_by_user_idx
     on public.user_devices(user_id, last_used_at desc) where is_active = true;
-
-    
--- -- =============================================================================
--- -- 012_user_devices.sql
--- -- Devices a user has logged in from. Groundwork for trusted-device
--- -- recognition and future MFA.
--- -- =============================================================================
-
--- create table if not exists public.user_devices (
---   id                  uuid primary key default gen_random_uuid(),
---   user_id             uuid not null references public.users(id) on delete cascade,
---   device_name         text,
---   browser             text,
---   operating_system    text,
---   ip_address          inet,
---   trusted             boolean not null default false,
---   last_used_at        timestamptz not null default now(),
---   created_at          timestamptz not null default now()
--- );
-
--- comment on table public.user_devices is 'Known devices per user, for trusted-device / MFA features.';
-
--- create index if not exists user_devices_user_id_idx on public.user_devices(user_id);

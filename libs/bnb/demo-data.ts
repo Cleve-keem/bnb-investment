@@ -51,7 +51,7 @@ export const marketAssets: MarketAsset[] = [
     symbol: "BNB",
     name: "BNB",
     price: 682.21,
-    change: -1.40,
+    change: 0.91,
     volume: "$3.05M",
     icon: "B",
   },
@@ -617,7 +617,7 @@ export const investments = [
   },
 
   {
-    name: "BNB Growth Plan",
+    name: "BNB Growth Plan Premium",
     invested: 3000,
     currentValue: 3000,
     return: 0,
