@@ -19,7 +19,7 @@ create table if not exists public.otp_verifications (
         not null
         unique,
 
-    otp_code_hash text
+    otp_code text
         not null,
 
     purpose public.otp_purpose
@@ -80,7 +80,7 @@ create table if not exists public.otp_verifications (
 comment on table public.otp_verifications is
 'Stores hashed OTPs used for authentication and account verification.';
 
-comment on column public.otp_verifications.otp_code_hash is
+comment on column public.otp_verifications.otp_code is
 'Hashed OTP value. Plaintext OTPs must never be stored.';
 
 comment on column public.otp_verifications.reference is

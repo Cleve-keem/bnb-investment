@@ -30,6 +30,7 @@ as $$
 declare
     v_code text;
     v_expiry_minutes numeric;
+    v_ref text := public.generate_reference('OTP');
 begin
     if p_user_id is null then
         raise exception 'generate_otp: user id is required';
@@ -74,17 +75,16 @@ begin
     insert into public.otp_verifications
     (
         user_id,
-        otp_code_hash,
+        otp_code,
+        reference,
         purpose,
         expires_at
     )
     values
     (
         p_user_id,
-        extensions.crypt(
-            v_code,
-            extensions.gen_salt('bf')
-        ),
+        v_code,
+        v_ref,
         p_purpose,
         timezone('utc', now())
             + make_interval(mins => v_expiry_minutes::int)
