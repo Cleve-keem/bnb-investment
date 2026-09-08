@@ -1,14 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  ArrowDownLeft,
-  ArrowUpRight,
-  BriefcaseBusiness,
-  DollarSign,
-  TrendingUp,
-  Wallet,
-} from "lucide-react";
+import { BriefcaseBusiness, TrendingUp, Wallet } from "lucide-react";
 
 import StatCard from "@/components/bnb/dashboard/StatCard";
 import QuickActions from "@/components/bnb/dashboard/QuickActions";
@@ -30,11 +23,9 @@ export default function DashboardPage() {
         <section className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-sm text-zinc-500">{formatLongDate()}</p>
-
             <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">
               Welcome Back, Eve 👋
             </h1>
-
             <p className="mt-2 text-sm text-zinc-500">
               Here&apos;s what&apos;s happening with your portfolio today.
             </p>
