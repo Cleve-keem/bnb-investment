@@ -27,16 +27,10 @@ export default function DashboardHeader({ onMenu }: Props) {
   const router = useRouter();
 
   const [notificationsOpen, setNotificationsOpen] = useState(false);
-
   const [profileOpen, setProfileOpen] = useState(false);
-
   const profileRef = useRef<HTMLDivElement>(null);
-
   const { hasNewNotifications, markNotificationsAsSeen } = useNotifications();
 
-  /**
-   * Close profile menu when clicking outside.
-   */
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -48,7 +42,6 @@ export default function DashboardHeader({ onMenu }: Props) {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -94,8 +87,8 @@ export default function DashboardHeader({ onMenu }: Props) {
   };
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/[0.06] bg-[#080c11]/90 backdrop-blur-xl">
-      <div className="flex h-[72px] items-center gap-4 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-30 border-b border-white/6 bg-[#080c11]/90 backdrop-blur-xl">
+      <div className="flex h-18 items-center gap-4 px-4 sm:px-6 lg:px-8">
         {/* Mobile menu */}
         <button
           type="button"
@@ -104,19 +97,6 @@ export default function DashboardHeader({ onMenu }: Props) {
         >
           <Menu size={20} />
         </button>
-
-        {/* Search */}
-        <div className="relative hidden w-full max-w-md sm:block">
-          <Search
-            size={17}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-600"
-          />
-
-          <input
-            placeholder="Search assets, markets..."
-            className="h-10 w-full rounded-xl border border-white/[0.06] bg-white/[0.025] pl-11 pr-4 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[#f0b90b]/40"
-          />
-        </div>
 
         {/* Right side */}
         <div className="ml-auto flex items-center gap-2">
@@ -128,7 +108,6 @@ export default function DashboardHeader({ onMenu }: Props) {
             className="relative rounded-xl border border-white/[0.06] p-2.5 text-zinc-400 transition hover:bg-white/[0.04] hover:text-white"
           >
             <Bell size={19} />
-
             {/* New notification indicator */}
             {hasNewNotifications && (
               <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-[#f0b90b] ring-2 ring-[#080c11]" />
@@ -149,10 +128,9 @@ export default function DashboardHeader({ onMenu }: Props) {
               aria-expanded={profileOpen}
               className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.02] p-1.5 pr-3 transition hover:bg-white/[0.05]"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#f0b90b] text-sm font-bold text-black">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f0b90b] text-sm font-bold text-black">
                 E
               </div>
-
               <div className="hidden text-left sm:block">
                 <p className="text-xs font-medium text-white">Elisa Eve</p>
 
