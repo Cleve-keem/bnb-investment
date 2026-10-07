@@ -60,7 +60,7 @@ export default function InvestmentsPage() {
                   <span>{investment.progress}%</span>
                 </div>
 
-                <div className="h-2 overflow-hidden rounded-full bg-white/[0.05]">
+                <div className="h-2 overflow-hidden rounded-full bg-white/5">
                   <div
                     className="h-full rounded-full bg-[#f0b90b]"
                     style={{ width: `${investment.progress}%` }}
@@ -77,7 +77,7 @@ export default function InvestmentsPage() {
 
 function Metric({ title, value }: { title: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-[#0d131a] p-5">
+    <div className="rounded-2xl border border-white/6 bg-[#0d131a] p-5">
       <p className="text-xs text-zinc-500">{title}</p>
       <p className="mt-3 text-2xl font-semibold">{value}</p>
     </div>

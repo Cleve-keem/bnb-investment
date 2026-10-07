@@ -34,9 +34,9 @@ export default function RecentTransactions() {
           return (
             <div
               key={transaction.id}
-              className="flex items-center gap-3 rounded-xl border border-white/[0.05] bg-white/[0.015] p-3"
+              className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/1.5 p-3"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.04]">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/4">
                 {positive ? (
                   <ArrowDownLeft size={16} className="text-emerald-400" />
                 ) : (
