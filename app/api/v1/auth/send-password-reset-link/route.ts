@@ -69,7 +69,7 @@ export async function POST(req: Request) {
               </h2>
 
               <p style="color: #4b5563; line-height: 1.6;">
-                Hello ${userProfile.first_name || "Investor"},
+                Hello ${userProfile.full_name || "Investor"},
               </p>
 
               <p style="color: #4b5563; line-height: 1.6;">
