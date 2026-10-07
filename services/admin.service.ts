@@ -1,4 +1,3 @@
-import { transactions } from "@/libs/bnb/demo-data";
 import { supabase } from "@/libs/supabase/browser";
 
 const adminService = {
@@ -337,7 +336,7 @@ const adminService = {
   }: {
     walletId: string;
     amount: number;
-    adjustmentType: "credit" | "debit";
+    adjustmentType: "credit_correction" | "debit_correction";
     reason: string;
     notes?: string | null;
   }) {

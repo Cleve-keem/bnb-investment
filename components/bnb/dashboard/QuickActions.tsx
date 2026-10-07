@@ -1,4 +1,4 @@
-import { ArrowDownLeft, ArrowUpRight, Repeat2 } from "lucide-react";
+import { ArrowDownLeft, ArrowUpRight } from "lucide-react";
 
 type Props = {
   onDeposit: () => void;
@@ -13,7 +13,7 @@ export default function QuickActions({ onDeposit, onWithdraw }: Props) {
         className="flex items-center gap-2 rounded-xl bg-[#f0b90b] px-4 py-2.5 text-sm font-semibold text-black transition hover:bg-[#ffc928]"
       >
         <ArrowDownLeft size={17} />
-        Deposit
+        Add Funds
       </button>
 
       <button
@@ -23,14 +23,6 @@ export default function QuickActions({ onDeposit, onWithdraw }: Props) {
         <ArrowUpRight size={17} />
         Withdraw
       </button>
-
-      {/* <a
-        href="/trade"
-        className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm font-medium transition hover:bg-white/[0.06]"
-      >
-        <Repeat2 size={17} />
-        Trade
-      </a> */}
     </div>
   );
 }

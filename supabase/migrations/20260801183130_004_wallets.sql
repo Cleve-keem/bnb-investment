@@ -22,11 +22,8 @@ create table if not exists public.wallets (
 );
 
 comment on table public.wallets is 'Stores each user''s virtual wallet. Balance changes must only occur through database RPC functions.';
-
 comment on column public.wallets.balance is 'Current total wallet balance including locked funds.';
-
 comment on column public.wallets.locked_balance is 'Portion of the balance reserved for pending operations and unavailable for spending.';
-
 comment on column public.wallets.version is 'Optimistic locking version used to prevent concurrent wallet update conflicts.';
 
 create index if not exists wallets_user_id_idx on public.wallets(user_id);

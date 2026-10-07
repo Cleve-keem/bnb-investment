@@ -11,7 +11,6 @@ import {
   ChevronRight,
   CircleHelp,
   LayoutDashboard,
-  // LogOut,
   Settings,
   TrendingUp,
   User,
@@ -103,15 +102,13 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
       {/* Scrollable Navigation */}
       <div className="min-h-0 flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20">
         <NavSection title="Overview" items={mainNavigation} onClose={onClose} />
-
         <NavSection title="Invest" items={investNavigation} onClose={onClose} />
-
         <NavSection
           title="Activity"
           items={activityNavigation}
           onClose={onClose}
         />
-
+        
         {/* Account */}
         <div className="mt-8 pb-6">
           <p className="mb-3 px-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600">
@@ -125,7 +122,7 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
             className={`mb-1 flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition ${
               pathname === "/profile"
                 ? "bg-[#f0b90b]/10 text-[#f0b90b]"
-                : "text-zinc-400 hover:bg-white/[0.04] hover:text-white"
+                : "text-zinc-400 hover:bg-white/4 hover:text-white"
             }`}
           >
             <User size={18} />
@@ -139,7 +136,7 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
             className={`mb-1 flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition ${
               pathname === "/settings"
                 ? "bg-[#f0b90b]/10 text-[#f0b90b]"
-                : "text-zinc-400 hover:bg-white/[0.04] hover:text-white"
+                : "text-zinc-400 hover:bg-white/4 hover:text-white"
             }`}
           >
             <Settings size={18} />
@@ -153,7 +150,7 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
             className={`flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm transition ${
               pathname === "/help"
                 ? "bg-[#f0b90b]/10 text-[#f0b90b]"
-                : "text-zinc-400 hover:bg-white/[0.04] hover:text-white"
+                : "text-zinc-400 hover:bg-white/4 hover:text-white"
             }`}
           >
             <CircleHelp size={18} />
@@ -178,7 +175,7 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex h-screen w-[260px] flex-col border-r border-white/[0.06] bg-[#0b1016] px-4 py-5 transition-transform duration-300 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex h-screen w-65 flex-col border-r border-white/6 bg-[#0b1016] px-4 py-5 transition-transform duration-300 lg:translate-x-0 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -196,7 +193,7 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
 
         {/* Bottom Account Card */}
         <div className="mt-4 shrink-0">
-          <div className="rounded-2xl border border-white/[0.06] bg-white/[0.025] p-3">
+          <div className="rounded-2xl border border-white/6 bg-white/2.5 p-3">
             <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-800 text-sm font-semibold">
                 E
@@ -209,7 +206,6 @@ export default function Sidebar({ mobileOpen, onClose }: Props) {
               </div>
             </div>
           </div>
-
           {/*
           <button
             type="button"
@@ -258,7 +254,7 @@ function NavSection({
             className={`group mb-1 flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition ${
               active
                 ? "bg-[#f0b90b]/10 font-medium text-[#f0b90b]"
-                : "text-zinc-400 hover:bg-white/[0.04] hover:text-white"
+                : "text-zinc-400 hover:bg-white/4 hover:text-white"
             }`}
           >
             <Icon size={18} />

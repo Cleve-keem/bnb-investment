@@ -1,9 +1,16 @@
 import Link from "next/link";
 import { ArrowDownLeft, ArrowUpRight, ChevronRight } from "lucide-react";
 import { transactions } from "@/libs/bnb/demo-data";
+import { useLocalTransactions } from "@/hooks/useLocalTransactions";
+import { useMemo } from "react";
 
 export default function RecentTransactions() {
-  const recentTransaction = transactions.slice(0, 6);
+  const { localTransactions } = useLocalTransactions();
+  const recentTransaction = useMemo(() => {
+    const merged = [...localTransactions, ...transactions];
+    return merged.slice(0, 5);
+  }, [localTransactions]);
+
   return (
     <div className="rounded-2xl border border-white/6 bg-[#0d131a] p-5">
       <div className="mb-5 flex items-center justify-between">
@@ -11,7 +18,6 @@ export default function RecentTransactions() {
           <p className="text-sm font-medium">Recent Transactions</p>
           <p className="mt-1 text-xs text-zinc-500">Latest account activity</p>
         </div>
-
         <Link
           href="/transactions"
           className="flex items-center gap-1 text-xs text-[#f0b90b]"
@@ -47,7 +53,6 @@ export default function RecentTransactions() {
                   {transaction.date}
                 </p>
               </div>
-
               <div className="ml-auto text-right">
                 <p
                   className={`text-sm font-medium ${
@@ -57,7 +62,6 @@ export default function RecentTransactions() {
                   {positive ? "+" : "-"}$
                   {Math.abs(transaction.amount).toLocaleString()}
                 </p>
-
                 <span className="text-[10px] text-zinc-600">
                   {transaction.status}
                 </span>

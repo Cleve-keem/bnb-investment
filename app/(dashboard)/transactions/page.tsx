@@ -1,18 +1,40 @@
 "use client";
 
 import DashboardShell from "@/components/bnb/layout/DashBoardShell";
+import { useLocalTransactions } from "@/hooks/useLocalTransactions";
 import { transactions } from "@/libs/bnb/demo-data";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 const filters = ["All", "Deposit", "Withdrawal", "Investment"];
 
 export default function TransactionsPage() {
   const [filter, setFilter] = useState("All");
+  const { localTransactions } = useLocalTransactions();
+
+  const allTransactions = useMemo(() => {
+    const merged = [...localTransactions, ...transactions];
+    const seen = new Set<string>();
+    return merged.filter((transaction) => {
+      if (seen.has(transaction.id)) {
+        return false;
+      }
+
+      seen.add(transaction.id);
+      return true;
+    });
+  }, [localTransactions]);
 
   const filtered =
     filter === "All"
-      ? transactions
-      : transactions.filter((item: any) => item.type === filter);
+      ? allTransactions
+      : allTransactions.filter((item) => item.type === filter);
+
+  // const [filter, setFilter] = useState("All");
+
+  // const filtered =
+  //   filter === "All"
+  //     ? transactions
+  //     : transactions.filter((item: any) => item.type === filter);
 
   return (
     <DashboardShell>
@@ -63,12 +85,10 @@ export default function TransactionsPage() {
                       <p className="text-sm font-medium">
                         {transaction.description}
                       </p>
-
                       <p className="mt-1 text-[10px] text-zinc-600">
                         {transaction.id}
                       </p>
                     </td>
-
                     <td className="px-5 py-5 text-sm text-zinc-400">
                       {transaction.type}
                     </td>

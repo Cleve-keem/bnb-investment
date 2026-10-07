@@ -196,13 +196,14 @@ export default function AdminUserDetailsPage() {
       return;
     }
 
-    await walletAdjustmentMutation.mutateAsync({
-      walletId: wallet.id,
-      amount: adjustmentMode === "credit" ? numericAmount : -numericAmount,
-      adjustmentType: adjustmentMode === "credit" ? "credit" : "debit",
-      reason: reason.trim(),
-      notes: notes?.trim() || null,
-    });
+     await walletAdjustmentMutation.mutateAsync({
+       walletId: wallet.id,
+       amount: adjustmentMode === "credit" ? numericAmount : -numericAmount,
+       adjustmentType:
+         adjustmentMode === "credit" ? "credit_correction" : "debit_correction",
+       reason: reason.trim(),
+       notes: notes?.trim() || null,
+     });
 
     closeWalletModal();
     await refetch();

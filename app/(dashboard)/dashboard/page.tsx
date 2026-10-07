@@ -30,36 +30,31 @@ export default function DashboardPage() {
               Here&apos;s what&apos;s happening with your portfolio today.
             </p>
           </div>
-
           <QuickActions
             onDeposit={() => setDepositOpen(true)}
             onWithdraw={() => setWithdrawOpen(true)}
           />
         </section>
-
         <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           <StatCard
-            title="Total Portfolio"
-            value="$324,719.26"
-            change="+4.34% today"
+            title="Est. Total value"
+            value="$343,207.05"
+            change="+0.52% today"
             positive
             icon={<BriefcaseBusiness size={19} />}
           />
-
           <StatCard
             title="Available Balance"
-            value="$322,609.45"
+            value="$332,825.50"
             icon={<Wallet size={19} />}
           />
-
           <StatCard
             title="Total Returns"
             value="+$116,564.17"
-            change="+6.14% overall"
+            change="+1.01% overall"
             positive
             icon={<TrendingUp size={19} />}
           />
-
           {/* <StatCard
             title="Today's P/L"
             value="+$4,250.00"
@@ -68,23 +63,12 @@ export default function DashboardPage() {
             icon={<DollarSign size={19} />}
           /> */}
         </section>
-
-        <section>
-          <PortfolioChart />
-        </section>
-
-        <section className="grid gap-6 xl:grid-cols-1">
-          <TopMovers />
-          {/* <AISignals /> */}
-        </section>
-
-        <section>
-          <RecentTransactions />
-        </section>
+        <PortfolioChart />
+        <TopMovers />
+        <RecentTransactions />
       </div>
 
       <DepositModal open={depositOpen} onClose={() => setDepositOpen(false)} />
-
       <WithdrawModal
         open={withdrawOpen}
         onClose={() => setWithdrawOpen(false)}
@@ -92,6 +76,102 @@ export default function DashboardPage() {
     </DashboardShell>
   );
 }
+
+// "use client";
+
+// import { useState } from "react";
+// import { BriefcaseBusiness, Loader2, TrendingUp, Wallet } from "lucide-react";
+// import StatCard from "@/components/bnb/dashboard/StatCard";
+// import QuickActions from "@/components/bnb/dashboard/QuickActions";
+// import PortfolioChart from "@/components/bnb/dashboard/PortfolioChart";
+// import TopMovers from "@/components/bnb/dashboard/TopMovers";
+// import RecentTransactions from "@/components/bnb/dashboard/RecentTransactions";
+// import DashboardShell from "@/components/bnb/layout/DashBoardShell";
+// import DepositModal from "@/components/bnb/wallets/DepositModal";
+// import WithdrawModal from "@/components/bnb/wallets/WithdrawModal";
+// import { formatLongDate } from "@/libs/formatter/date";
+// import { useWalletSummary } from "@/hooks/wallet";
+// import { useAuthSession } from "@/hooks/useAuthSession";
+// import { formatCurrency } from "@/libs/formatter/money";
+
+// export default function DashboardPage() {
+//   const [depositOpen, setDepositOpen] = useState(false);
+//   const [withdrawOpen, setWithdrawOpen] = useState(false);
+//   const { data: summary, isPending, isError, error } = useWalletSummary();
+//   const { session } = useAuthSession();
+
+//   console.log("🚀 ~ file: page.tsx:22 ~ DashboardPage ~ session:", session);
+
+//   const firstName = session?.user?.user_metadata?.full_name?.split(" ")[0] ?? "there";
+
+//   console.log("🚀 ~ file: page.tsx:25 ~ DashboardPage ~ firstName:", firstName);
+
+//   if (isPending) {
+//     return (
+//       <div className="flex min-h-[70vh] items-center justify-center">
+//         <Loader2 className="h-5 w-5 animate-spin text-[#f0b90b]" />
+//       </div>
+//     );
+//   }
+
+//   if (isError || !summary) {
+//     return (
+//       <div className="flex min-h-[70vh] items-center justify-center text-sm text-red-400">
+//         {error instanceof Error ? error.message : "Couldn't load your wallet."}
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <DashboardShell>
+//       <div className="space-y-6">
+//         <section className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+//           <div>
+//             <p className="text-sm text-zinc-500">{formatLongDate()}</p>
+//             <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">
+//               Welcome Back, {firstName} 👋
+//             </h1>
+//             <p className="mt-2 text-sm text-zinc-500">
+//               Here&apos;s what&apos;s happening with your portfolio today.
+//             </p>
+//           </div>
+//           <QuickActions
+//             onDeposit={() => setDepositOpen(true)}
+//             onWithdraw={() => setWithdrawOpen(true)}
+//           />
+//         </section>
+
+//         <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+//           <StatCard
+//             title="Est. Total Value"
+//             value={formatCurrency(summary.totalValue, summary.currency)}
+//             icon={<BriefcaseBusiness size={19} />}
+//           />
+//           <StatCard
+//             title="Available Balance"
+//             value={formatCurrency(summary.available, summary.currency)}
+//             icon={<Wallet size={19} />}
+//           />
+//           <StatCard
+//             title="Total Returns"
+//             value={`+${formatCurrency(summary.totalReturn, summary.currency)}`}
+//             icon={<TrendingUp size={19} />}
+//           />
+//         </section>
+
+//         <PortfolioChart />
+//         <TopMovers />
+//         <RecentTransactions />
+//       </div>
+
+//       <DepositModal open={depositOpen} onClose={() => setDepositOpen(false)} />
+//       <WithdrawModal
+//         open={withdrawOpen}
+//         onClose={() => setWithdrawOpen(false)}
+//       />
+//     </DashboardShell>
+//   );
+// }
 
 // "use client";
 
